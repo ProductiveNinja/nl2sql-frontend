@@ -1,0 +1,45 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "nl2sql-frontend",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "application",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "eslint.format.enable": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSaveMode": "file",
+        "gitblame.inlineMessageFormat": "Blame ${author.name} (${time.ago}) - ${commit.summary}",
+        "yaml.schemas": {
+          "https://appsteam-pipeline.dev-scapp.swisscom.com/pipeline-yaml-schema-application.json": ".cicd/pipeline.yml",
+          "https://appsteam-pipeline.dev-scapp.swisscom.com/pipeline-yaml-schema-environment.json": ".cicd/environments/**.yml"
+        }
+      },
+      "extensions": [
+        "ChakrounAnas.turbo-console-log",
+        "christian-kohler.npm-intellisense",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "Gruntfuggly.todo-tree",
+        "redhat.vscode-yaml",
+        "streetsidesoftware.code-spell-checker",
+        "vivaxy.vscode-conventional-commits",
+        "waderyan.gitblame"
+      ]
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [4200],
+  "initializeCommand": "if [ ! -f .npmrc ]; then cp ~/.npmrc .npmrc; fi",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bash -i .devcontainer/post-create.sh; npm i",
+  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node"
+}

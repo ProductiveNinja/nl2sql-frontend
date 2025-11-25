@@ -1,0 +1,182 @@
+/* Global styles */
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-y: auto;
+  position: relative;
+}
+
+/* if needed add classes */
+
+.chat-input-bar-1 {
+  padding: 0.75rem;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 50%;
+  z-index: 10;
+  background: transparent;
+}
+
+.chat-input-bar-1 .row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.chat-input-bar-1 sdx-input {
+  --sdx-input-height: auto;
+  --sdx-input-min-height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+}
+
+.chat-input-bar-1 .flex-xs-middle {
+  display: flex;
+  align-items: center;
+}
+
+.chat-input-bar-2 {
+  padding: 0.75rem;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  z-index: 10;
+  background: transparent;
+}
+
+.chat-input-bar-2 .row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.chat-input-bar-2 sdx-input {
+  --sdx-input-height: auto;
+  --sdx-input-min-height: 40px;
+}
+
+.chat-input-bar-2 .flex-xs-middle {
+  display: flex;
+  align-items: center;
+}
+
+.header-bar {
+  padding: 1rem;
+  margin-left: 2cm;
+  top: 64px;
+  width: 100%;
+  z-index: 1000;
+}
+
+.response-chat-bubble {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #f8fafb;
+  background-size: 20px 20px;
+  text-justify: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.request-chat-bubble {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #0048cf; /* Blue Rollover (.int-blue--active) */
+  color: white; /* Adding white text for better contrast */
+  background-size: 20px 20px;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Standard text class for consistent typography */
+.text-standard {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+/* WebSocket connection status colors */
+.int-green {
+  color: #00b050 !important; /* Swisscom green for connected state */
+}
+
+.int-orange {
+  color: #ff8c00 !important; /* Swisscom orange for connecting state */
+}
+
+.int-red {
+  color: #e60000 !important; /* Swisscom red for disconnected state */
+}
+
+/* Swisscom Navy color */
+.sc-navy {
+  color: #001155 !important; /* Swisscom Navy */
+}
+
+/* WebSocket status indicator component styles */
+.connection-status {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+
+.connection-status-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background-color: currentColor !important;
+  flex-shrink: 0 !important;
+}
+
+/* Ensure websocket status is visible in header */
+.websocket-status {
+  position: absolute !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 1000 !important;
+  font-family: inherit !important;
+}
+
+.websocket-status-fixed {
+  position: fixed !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 99999 !important;
+  font-family: inherit !important;
+  pointer-events: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Header positioning helper */
+sdx-header {
+  position: relative !important;
+}

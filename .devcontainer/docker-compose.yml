@@ -1,0 +1,46 @@
+# The bridge network allows the services
+# to be available for other applications
+# within WSL2
+networks:
+  nl2sql-network:
+    # Make sure sure this uses the same name as other
+    # applications that want to connect
+    # Meaning, this should be the same network as the backend
+    name: nl2sql-frontend
+    driver: bridge
+
+services:
+  application:
+    container_name: nl2sql-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Use the default non-root user 1000
+        USER_UID: 1000
+        USER_GID: 1000
+    networks:
+      - nl2sql-network
+    volumes:
+      # VSCode workspace (DO NOT REMOVE THIS)
+      - ..:/workspace:cached
+      # Bind the SSH folder to access git remotes (aka BitBucket)
+      - ~/.ssh:/home/node/.ssh:ro
+      # Bind user .npmrc file to get credentials in container
+      - ~/.npmrc:/home/node/.npmrc:ro
+      # Bind the docker socket to access docker from within the container
+      # - /var/run/docker.sock:/var/run/docker.sock
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Uncomment the next line to use a non-root user for all processes.
+    user: node
+
+    env_file:
+      - ./workspace.env
+
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    ports:
+      - 4200:4200
